@@ -49,31 +49,33 @@ int reg() {
 
 //login function
 int login() {
-	std::ifstream log_data("register.txt");
-	if (!log_data.is_open()) {
-		std::cout << "Failed to open file";
-		return 0;
-	}
-	std::getline(log_data, name, '\n');
-	std::getline(log_data, password, '\n');
-
-	log_data.close();
-
 	while (1) {
-		password = decryption(password);
-
-		std::cout << "\n\n\n"
-			<< "Enter Username: ";
-		std::getline(std::cin, inName);
-		std::cout << "Enter Password: ";
-		std::getline(std::cin, inPassword);
-
-		if (inName == name && inPassword == password) {
-			std::cout << "\n\nLogin Succesful\n\n" << "Welcome, " << inName << "\n";
-			break;
+		std::ifstream log_data("register.txt");
+		if (!log_data.is_open()) {
+			std::cout << "Failed to open file";
+			return 0;
 		}
+		std::getline(log_data, name, '\n');
+		std::getline(log_data, password, '\n');
+
+		log_data.close();
+			password = decryption(password);
+
+			std::cout << "\n\n\n"
+				<< "Enter Username: ";
+			std::getline(std::cin, inName);
+			std::cout << "Enter Password: ";
+			std::getline(std::cin, inPassword);
+
+			if (inName == name && inPassword == password) {
+				std::cout << "\n\nLogin Succesful\n\n" << "Welcome, " << inName << "\n";
+				break;
+			}
+			else {
+				std::cout << "\nLogin failed!";
+			}
 	}
-	std::cout << "Your secret files are here" << "\n\n\n\n\n\n";
+	std::cout << "Your secret files are here" << "\n\n\n\n\n";
 }
 
 
@@ -85,7 +87,7 @@ int main() {
 		std::getline(std::cin, choice);
 
 		if (choice == "exit") {
-			return 1;
+			return 0;
 		}
 
 		if (choice == "register") {
@@ -96,5 +98,5 @@ int main() {
 			login();
 		}
 	}
-	return 1;
+	return 0;
 }
