@@ -1,2 +1,2 @@
 # Login_Register
-Login and registeration system made with c++. Encrypts passwords before saving them in a txt file.
+Login and registeration system made with c++. Basic password encryption before saving password into txt file.
